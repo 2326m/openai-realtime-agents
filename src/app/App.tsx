@@ -28,11 +28,13 @@ import { allAgentSets, defaultAgentSetKey } from "@/app/agentConfigs";
 import { simpleHandoffScenario } from "@/app/agentConfigs/simpleHandoff";
 import { customerServiceRetailScenario } from "@/app/agentConfigs/customerServiceRetail";
 import { chatSupervisorScenario } from "@/app/agentConfigs/chatSupervisor";
+import { elderCompanionScenario } from "@/app/agentConfigs/elderCompanion";
 
 const sdkScenarioMap: Record<string, RealtimeAgent[]> = {
   simpleHandoff: simpleHandoffScenario,
   customerServiceRetail: customerServiceRetailScenario,
   chatSupervisor: chatSupervisorScenario,
+  elderCompanion: elderCompanionScenario,
 };
 
 import useAudioDownload from "./hooks/useAudioDownload";

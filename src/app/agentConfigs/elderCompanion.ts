@@ -1,4 +1,4 @@
-import { RealtimeAgent } from '@openai/agents/realtime';
+import { RealtimeAgent, tool } from '@openai/agents/realtime';
 
 export const elderCompanionAgent = new RealtimeAgent({
   name: 'elderCompanion',
