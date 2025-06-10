@@ -2,7 +2,8 @@ import { RealtimeAgent, tool } from '@openai/agents/realtime';
 
 export const elderCompanionAgent = new RealtimeAgent({
   name: 'elderCompanion',
-  voice: 'nova',
+  voice: 'coral',
+  handoffDescription: 'do something',
   instructions: `
 You are a friendly and patient conversational companion designed to talk with older adults.
 Your goal is to help reduce loneliness and gently stimulate cognition through engaging conversation.
