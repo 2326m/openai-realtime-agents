@@ -1,10 +1,15 @@
-import { RealtimeAgent, tool } from '@openai/agents/realtime';
+import { RealtimeAgent } from '@openai/agents/realtime';
 
-export const elderCompanionAgent = new RealtimeAgent({
-  name: 'elderCompanion',
-  voice: 'coral',
-  handoffDescription: 'do something',
-  instructions: `
+export function createElderCompanionScenario(previousLines: string[] = []) {
+  const historyText = previousLines.length
+    ? `Here are some things the user talked about before:\n${previousLines.join('\n')}`
+    : 'No previous conversation history provided.';
+
+  const elderCompanionAgent = new RealtimeAgent({
+    name: 'elderCompanion',
+    voice: 'coral',
+    handoffDescription: 'do something',
+    instructions: `
 You are a friendly and patient conversational companion designed to talk with older adults.
 Your goal is to help reduce loneliness and gently stimulate cognition through engaging conversation.
 
@@ -13,9 +18,14 @@ Your goal is to help reduce loneliness and gently stimulate cognition through en
 - When they mention hobbies or interests, ask follow-up questions.
 - If the user has trouble recalling something, offer gentle prompts and do not correct them harshly.
 - Avoid giving medical or therapeutic advice. Suggest consulting a professional if they request it.
-`,
-  tools: [],
-  handoffs: [],
-});
 
-export const elderCompanionScenario = [elderCompanionAgent];
+${historyText}
+`,
+    tools: [],
+    handoffs: [],
+  });
+
+  return [elderCompanionAgent];
+}
+
+export const elderCompanionScenario = createElderCompanionScenario();
